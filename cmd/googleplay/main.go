@@ -27,8 +27,12 @@ func main() {
 	var password string
 	flag.StringVar(&password, "p", "", "password")
 	// 代理
-	var proxy string
-	flag.StringVar(&proxy, "proxy", "", "proxy")
+	var s5addr string
+	flag.StringVar(&proxy, "s5addr", "", "s5addr")
+	var s5user string
+	flag.StringVar(&proxy, "s5addr", "", "s5user")
+	var s5pwd string
+	flag.StringVar(&proxy, "s5addr", "", "s5pwd")
 	// purchase
 	var (
 		buf      strings.Builder
@@ -51,7 +55,7 @@ func main() {
 		gp.LogLevel = 1
 	}
 	if email != "" {
-		err := doToken(email, password, proxy)
+		err := doToken(email, password, s5addr, s5user, s5pwd)
 		if err != nil {
 			panic(err)
 		}
