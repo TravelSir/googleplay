@@ -2,16 +2,16 @@ package main
 
 import (
 	"fmt"
-	gp "github.com/TravelSir/googleplay"
 	"github.com/TravelSir/format"
+	gp "github.com/TravelSir/googleplay"
 	"io"
 	"net/http"
 	"os"
 	"time"
 )
 
-func doToken(email, password string, proxy string) error {
-	tok, err := gp.NewToken(email, password, proxy)
+func doToken(email, password string, s5addr, s5user, s5pwd string) error {
+	tok, err := gp.NewToken(email, password, s5addr, s5user, s5pwd)
 	if err != nil {
 		return err
 	}

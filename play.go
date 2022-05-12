@@ -83,7 +83,7 @@ type Token struct {
 
 // You can also use host "android.clients.google.com", but it also uses
 // TLS fingerprinting.
-func NewToken(email, password string, proxy string) (*Token, error) {
+func NewToken(email, password string, s5addr, s5user, s5pwd string) (*Token, error) {
 	body := url.Values{
 		"Email":              {email},
 		"Passwd":             {password},
@@ -102,7 +102,7 @@ func NewToken(email, password string, proxy string) (*Token, error) {
 		return nil, err
 	}
 	LogLevel.Dump(req)
-	res, err := crypto.Transport(hello, proxy).RoundTrip(req)
+	res, err := crypto.Transport(hello, s5addr, s5user, s5pwd).RoundTrip(req)
 	if err != nil {
 		return nil, err
 	}
