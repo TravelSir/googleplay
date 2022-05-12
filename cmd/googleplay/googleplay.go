@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	gp "github.com/89z/googleplay"
+	gp "github.com/TravelSir/googleplay"
 	"github.com/TravelSir/format"
 	"io"
 	"net/http"

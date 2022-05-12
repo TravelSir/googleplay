@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	gp "github.com/89z/googleplay"
+	gp "github.com/TravelSir/googleplay"
 	"strings"
 )
 
