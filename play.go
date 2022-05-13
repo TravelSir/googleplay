@@ -7,6 +7,7 @@ import (
 	"github.com/TravelSir/format/crypto"
 	"io"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"strings"
 	"time"
@@ -83,7 +84,7 @@ type Token struct {
 
 // You can also use host "android.clients.google.com", but it also uses
 // TLS fingerprinting.
-func NewToken(email, password string, proxy string) (*Token, error) {
+func NewToken(email, password string) (*Token, error) {
 	body := url.Values{
 		"Email":              {email},
 		"Passwd":             {password},
@@ -102,7 +103,13 @@ func NewToken(email, password string, proxy string) (*Token, error) {
 		return nil, err
 	}
 	LogLevel.Dump(req)
-	res, err := crypto.Transport(hello, proxy).RoundTrip(req)
+	requestDump, err := httputil.DumpRequest(req, true)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(string(requestDump))
+	res, err := crypto.Transport(hello).RoundTrip(req)
+	fmt.Sprintln("%v", res)
 	if err != nil {
 		return nil, err
 	}
