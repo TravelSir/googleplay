@@ -10,8 +10,8 @@ import (
 	"time"
 )
 
-func doToken(email, password string) error {
-	tok, err := gp.NewToken(email, password)
+func doToken(email, password, proxy string) error {
+	tok, err := gp.NewToken(email, password, proxy)
 	if err != nil {
 		return err
 	}
