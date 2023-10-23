@@ -1,4 +1,4 @@
-module github.com/TravelSir/googleplay
+module github.com/dzervas/googleplay
 
 go 1.18
 
