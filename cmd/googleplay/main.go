@@ -51,7 +51,7 @@ func main() {
 		gp.LogLevel = 1
 	}
 	if email != "" {
-		err := doToken(email, password)
+		err := doToken(email, password, proxy)
 		if err != nil {
 			panic(err)
 		}
